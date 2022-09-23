@@ -1,3 +1,4 @@
 bins/*.o
 machine
 .vcsode
+.DS_Store
