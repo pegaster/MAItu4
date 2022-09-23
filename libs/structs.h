@@ -7,7 +7,7 @@
 #define STOP 3
 #define UNDEFINED 4
 #define BUFF_LENGTH 200
-
+//egrgre
 typedef struct Instruction
 {
     int symbol;
