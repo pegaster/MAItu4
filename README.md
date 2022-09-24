@@ -1,24 +1,28 @@
 # MAItu4
-## It is turing machine emulator
+It is turing machine emulator
 
-## For use you should buid it and install, for this type:
+## Instalation
+For use you should buid it and install, for this type:
 
-<sub>make install
-</sub>
+```
+make install
+```
 
 ## Using example:
 
-<sub> maitu4 [-d|-b] filename.tu4
+```
+maitu4 [-d|-b] filename.tu4
 -d for debug mode
 -b for debug with brakepoints mode
 in breakpoints mode use d for change mode to debug or f for change mode to classic
-</sub>
+```
 
-## Tape structure:
+Tape structure:
 
-<sub> length of tape
+```
+length of tape
 tape
 index of cursor
-</sub>
+```
 
-## Code structure you can see in code.tu4
+Code structure you can see in [code.tu4](https://github.com/pegaster/MAItu4/blob/main/code.tu4)
