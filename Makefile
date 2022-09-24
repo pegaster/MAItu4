@@ -21,7 +21,7 @@ bins/tapescreen.o: libs/tapescreen.h libs/tapescreen.c
 clear:
 	rm bins/*.o
 
-install: clear machine
+install: machine
 	$(shell cp machine /usr/local/bin/maitu4)
 	$(info cp machine /usr/local/bin/maitu4)
 	$(info App installed succesfull with name maitu4)
