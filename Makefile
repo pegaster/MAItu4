@@ -18,7 +18,10 @@ bins/logic.o: libs/logic.h libs/logic.c libs/structs.h
 bins/tapescreen.o: libs/tapescreen.h libs/tapescreen.c
 	gcc libs/tapescreen.c -c -o bins/tapescreen.o
 
-install: machine
+clear:
+	rm bins/*.o
+
+install: clear machine
 	$(shell cp machine /usr/local/bin/maitu4)
 	$(info cp machine /usr/local/bin/maitu4)
 	$(info App installed succesfull with name maitu4)

@@ -13,6 +13,10 @@
 #define DO_NOTHING 2
 #define STOP 3
 
+#define ALPHABET_LENGTH 256
+#define TAPE_LENGTH 80
+#define MODES_QUANTITY 100
+
 int main(int argc, char **argv){
     if(argc < 2){
         printf("No file to intereptate\n");
@@ -59,20 +63,18 @@ int main(int argc, char **argv){
     
     
     
-    int alphabetLength, tapeLength, cursorIndex, maxUsed, modesQuantity, mode = 0;
-    char *alphabet;
+    int cursorIndex, maxUsed, mode = 0;
     int *tape;
-    int *instructionsLengths;
     Instruction **instructions;
-    if(!ParseFromFile(filePtr, &alphabetLength, &alphabet, &modesQuantity, &instructions, &instructionsLengths)){
+    if(!ParseFromFile(filePtr, ALPHABET_LENGTH, MODES_QUANTITY, &instructions)){
         return 0;
     }
-    if(!ParseFromTape(&tapeLength, &tape, alphabetLength, alphabet, &cursorIndex)){
+    if(!ParseFromTape(TAPE_LENGTH, &tape, ALPHABET_LENGTH, &cursorIndex)){
         return 0;
     }
     if(debug){
         printf("cursor index: %d, mode: %d\n", cursorIndex, mode);
-        PrintTape(tapeLength, tape, alphabetLength, alphabet, cursorIndex, maxUsed, 1);
+        PrintTape(TAPE_LENGTH, tape, cursorIndex, maxUsed, 1);
         printf("\n");
         if(debug == 2){
             int c = getchar();
@@ -87,10 +89,10 @@ int main(int argc, char **argv){
     }
     maxUsed = cursorIndex;
     int res;
-    while((res = Execute(tape, tapeLength, &cursorIndex, &maxUsed, alphabetLength, alphabet, modesQuantity, instructions, instructionsLengths, &mode)) > 0){
+    while((res = Execute(tape, TAPE_LENGTH, &cursorIndex, &maxUsed, ALPHABET_LENGTH, MODES_QUANTITY, instructions, &mode)) > 0){
         if(debug){
             printf("cursor index: %d, mode: %d\n", cursorIndex, mode);
-            PrintTape(tapeLength, tape, alphabetLength, alphabet, cursorIndex, maxUsed, 1);
+            PrintTape(TAPE_LENGTH, tape, cursorIndex, maxUsed, 1);
             printf("\n");
             if(debug == 2){
                 int c = getchar();
@@ -106,12 +108,11 @@ int main(int argc, char **argv){
     if(debug){
         printf("cursor index: %d, mode: %d\n", cursorIndex, mode);
     }
-    PrintTape(tapeLength, tape, alphabetLength, alphabet, cursorIndex, maxUsed, debug);
-    for(int i = 0; i < modesQuantity; i++){
+    PrintTape(TAPE_LENGTH, tape, cursorIndex, maxUsed, debug);
+    for(int i = 0; i < MODES_QUANTITY; i++){
         free(instructions[i]);
     }
     free(instructions);
-    free(alphabet);
     free(tape);
     return 0;
 }

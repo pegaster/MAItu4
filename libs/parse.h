@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include "structs.h"
 
-int ParseFromFile(FILE *filePtr, int *alphabetLengthPtr, char **alphabetPtr, int *modesQuantityPtr, Instruction ***instructionsPtr, int **instructionsLengthsPtr);
-int ParseFromTape(int *tapeLengthPtr, int **tapePtr, int alphabetLength, char *alphabet, int *cursorIndexPtr);
+int ParseFromFile(FILE *filePtr, int alphabetLength, int modesQuantity, Instruction ***instructionsPtr);
+int ParseFromTape(int tapeLength, int **tapePtr, int alphabetLength, int *cursorIndexPtr);
 
 #endif

@@ -1,14 +1,10 @@
 #include "logic.h"
 #include <stdio.h>
 
-int Execute(int *tape, int tapeLength, int *cursorIndexPtr, int *maxUsedPtr, int alphabetLength, char *alphabet, int modesQuantity, Instruction **instructions, int *instrucionsLengths, int *modePtr){
+int Execute(int *tape, int tapeLength, int *cursorIndexPtr, int *maxUsedPtr, int alphabetLength, int modesQuantity, Instruction **instructions, int *modePtr){
     int cursorIndex = *cursorIndexPtr;
     int maxUsed = *maxUsedPtr;
     int mode = *modePtr;
-    if(tape[cursorIndex] >= instrucionsLengths[mode]){
-        printf("\'%c\' symbol is not declared for mode %d\n", alphabet[tape[cursorIndex]], mode);
-        return -1;
-    }
     Instruction curInstruction = instructions[mode][tape[cursorIndex]];
     if(curInstruction.action != STOP){
         mode = curInstruction.mode;
@@ -29,7 +25,7 @@ int Execute(int *tape, int tapeLength, int *cursorIndexPtr, int *maxUsedPtr, int
     case STOP:
         return 0;
     case UNDEFINED:
-        printf("\'%c\' symbol is not declared for mode %d\n", alphabet[tape[cursorIndex]], mode);
+        printf("\'%c\' symbol is not declared for mode %d\n", (char)tape[cursorIndex], mode);
         return -1;
     default:
         break;
