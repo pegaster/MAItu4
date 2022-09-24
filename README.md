@@ -17,12 +17,4 @@ maitu4 [-d|-b] filename.tu4
 in breakpoints mode use d for change mode to debug or f for change mode to classic
 ```
 
-Tape structure:
-
-```
-length of tape
-tape
-index of cursor
-```
-
 Code structure you can see in [code.tu4](https://github.com/pegaster/MAItu4/blob/main/code.tu4)
