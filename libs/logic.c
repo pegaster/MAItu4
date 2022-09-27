@@ -6,9 +6,6 @@ int Execute(int *tape, int tapeLength, int *cursorIndexPtr, int *maxUsedPtr, int
     int maxUsed = *maxUsedPtr;
     int mode = *modePtr;
     Instruction curInstruction = instructions[mode][tape[cursorIndex]];
-    if(curInstruction.action != STOP){
-        mode = curInstruction.mode;
-    }
     tape[cursorIndex] = curInstruction.symbol;
     switch (curInstruction.action)
     {
@@ -29,6 +26,9 @@ int Execute(int *tape, int tapeLength, int *cursorIndexPtr, int *maxUsedPtr, int
         return -1;
     default:
         break;
+    }
+    if(curInstruction.action != STOP){
+        mode = curInstruction.mode;
     }
     if(cursorIndex > maxUsed){
         maxUsed = cursorIndex;
