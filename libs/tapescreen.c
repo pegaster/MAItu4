@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 void PrintTape(int tapeLength, int *tape, int cursorIndex, int maxUsed, int flag){
-    int end = maxUsed;
+    int end = maxUsed + 1;
     if(flag){
         end = tapeLength;
     }
