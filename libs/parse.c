@@ -78,7 +78,7 @@ int ParseFromFile(FILE *filePtr, int alphabetLength, int modesQuantity, Instruct
 }
 
 int ParseFromTape(int tapeLength, int **tapePtr, int alphabetLength, int *cursorIndexPtr){
-    int cursorIndex, flag = 1;
+    int cursorIndex = 0, flag = 1;
     int *tape = (int *)malloc(sizeof(int) * tapeLength);
     char c;
     int index = -1;
